@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +47,7 @@
             background-size: 100%;
             border-radius: 8px;
             display: none;
-            transition: transform 0.5s;
+            transition: transform 0.5s; 
         }
 
         #message {
@@ -71,76 +70,77 @@
             border-radius: 4px;
             font-size: 14px;
         }
-
+        
         #openText {
             font-size: 18px;
             background-color: #c14250;
             color: #d9d9d9;
         }
 
-        @media only screen and (max-width: 786px) {
-            /* Styles for screens with a maximum width of 600px (mobile devices) */
-            body {
-                background: none; /* Remove background image */
-                align-items: flex-start; /* Adjust alignment */
-            }
-
+        /* Media query for hiding content on mobile */
+        @media (max-width: 768px) {
             #envelope,
             #paper,
             #message,
             #infoMessage,
             #openText {
-                display: none; /* Hide all elements */
+                display: none;
             }
 
-            #mobileMessage {
-                display: block; /* Show message for mobile users */
-                font-size: 16px;
-                color: #333333;
+            body {
+                background: none;
+            }
+
+            #desktopMessage {
+                display: block;
                 text-align: center;
+                font-family: 'Arial', sans-serif;
+                color: #333333;
+                font-size: 20px;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <div id="envelope" onmouseover="showInfoMessage()" onmouseout="hideInfoMessage()" onclick="openEnvelope()">
-        <center><br><br><br><span id="openText">🎄 Open 🎄</span></center>
-        <div id="paper">
-            <div id="message"></div>
-        </div>
-        <div id="infoMessage">Double click to open the gift!</div>
+<div id="envelope" onmouseover="showInfoMessage()" onmouseout="hideInfoMessage()" onclick="openEnvelope()">
+    <center><br><br><br><span id="openText">🎄 Open 🎄</span></center>
+    <div id="paper">
+        <div id="message"></div>
     </div>
+    <div id="infoMessage">Double click to open the gift!</div>
+</div>
 
-    <div id="mobileMessage">View on desktop only</div>
+<div id="desktopMessage">
+    View on Desktop only
+</div>
 
-    <script>
-        function openEnvelope() {
-            var paper = document.getElementById("paper");
-            paper.style.display = "block";
+<script>
+    function openEnvelope() {
+        var paper = document.getElementById("paper");
+        paper.style.display = "block";
 
-            if (paper.style.transform === 'translateY(-100%)') {
-                paper.style.transform = 'translateX(0%)';
-                message.style.display = 'block';
-                envelope.style.pointerEvents = "none"; // Disable clicking during the transition
-            } else {
-                paper.style.transform = 'translateY(-100%)';
-                message.style.display = 'none';
-            }
+        if (paper.style.transform === 'translateY(-100%)') {
+            paper.style.transform = 'translateX(0%)';
+            message.style.display = 'block'; 
+            envelope.style.pointerEvents = "none"; // Disable clicking during the transition
+        } else {
+            paper.style.transform = 'translateY(-100%)';
+            message.style.display = 'none';         
         }
+    }
 
-        function showInfoMessage() {
-            var infoMessage = document.getElementById("infoMessage");
-            infoMessage.style.display = "block";
-        }
+    function showInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "block";
+    }
 
-        function hideInfoMessage() {
-            var infoMessage = document.getElementById("infoMessage");
-            infoMessage.style.display = "none";
-        }
-    </script>
+    function hideInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "none";
+    }
+
+</script>
 
 </body>
-
 </html>
