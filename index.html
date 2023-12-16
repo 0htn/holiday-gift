@@ -77,17 +77,17 @@
             color: #d9d9d9;
         }
 
-        @media only screen and (max-width: 768px) {
-            /* Hide everything on mobile */
-            body, #envelope, #paper, #message, #infoMessage, #openText {
+        /* Media Query for Mobile Devices */
+        @media (max-width: 767px) {
+            #envelope,
+            #paper,
+            #infoMessage,
+            #openText {
                 display: none;
             }
 
-            /* Show message for mobile users */
-            #mobileMessage {
-                display: block;
-                text-align: center;
-                font-family: 'Arial', sans-serif;
+            body::before {
+                content: "View on desktop only";
                 font-size: 18px;
                 color: #333333;
             }
@@ -102,11 +102,6 @@
         <div id="message"></div>
     </div>
     <div id="infoMessage">Double click to open the gift!</div>
-</div>
-
-<!-- Message for mobile users -->
-<div id="mobileMessage">
-    View on Desktop Only
 </div>
 
 <script>
