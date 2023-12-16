@@ -70,26 +70,26 @@
             border-radius: 4px;
             font-size: 14px;
         }
+
         #openText {
             font-size: 18px;
             background-color: #c14250;
             color: #d9d9d9;
         }
 
-        /* Media query for hiding content on mobile */
-        @media only screen and (max-width: 600px) {
-            #envelope,
-            #paper,
-            #infoMessage,
-            #openText {
+        @media only screen and (max-width: 768px) {
+            /* Hide everything on mobile */
+            body, #envelope, #paper, #message, #infoMessage, #openText {
                 display: none;
             }
 
-            body::before {
-                content: "View on desktop for the full experience.";
-                font-size: 20px;
-                color: #ffffff;
+            /* Show message for mobile users */
+            #mobileMessage {
+                display: block;
                 text-align: center;
+                font-family: 'Arial', sans-serif;
+                font-size: 18px;
+                color: #333333;
             }
         }
     </style>
@@ -102,6 +102,11 @@
         <div id="message"></div>
     </div>
     <div id="infoMessage">Double click to open the gift!</div>
+</div>
+
+<!-- Message for mobile users -->
+<div id="mobileMessage">
+    View on Desktop Only
 </div>
 
 <script>
