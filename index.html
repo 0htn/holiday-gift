@@ -79,6 +79,7 @@
         }
 
         @media (max-width: 768px) {
+            /* Hide content and background on mobile */
             body,
             #envelope,
             #paper,
@@ -88,10 +89,11 @@
                 display: none;
             }
 
+            /* Show message for mobile users */
             #mobileMessage {
                 display: block;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 color: #333333;
             }
         }
@@ -108,7 +110,10 @@
         <div id="infoMessage">Double click to open the gift!</div>
     </div>
 
-    <div id="mobileMessage">View on desktop only.</div>
+    <!-- Message for mobile users -->
+    <div id="mobileMessage">
+        View on Desktop Only
+    </div>
 
     <script>
         function openEnvelope() {
