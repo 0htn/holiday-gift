@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +47,7 @@
             background-size: 100%;
             border-radius: 8px;
             display: none;
-            transition: transform 0.5s;
+            transition: transform 0.5s; 
         }
 
         #message {
@@ -78,69 +77,56 @@
             color: #d9d9d9;
         }
 
-        @media (max-width: 768px) {
-            /* Hide content and background on mobile */
-            body,
-            #envelope,
-            #paper,
-            #message,
-            #infoMessage,
-            #openText {
+        /* Media query for mobile devices */
+        @media only screen and (max-width: 767px) {
+            #envelope, #paper, #message, #infoMessage, #openText {
                 display: none;
             }
 
-            /* Show message for mobile users */
-            #mobileMessage {
-                display: block;
-                text-align: center;
-                font-size: 18px;
-                color: #333333;
+            body::before {
+                content: "View on desktop only";
+                font-size: 24px;
+                color: #ffffff;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <div id="envelope" onmouseover="showInfoMessage()" onmouseout="hideInfoMessage()" onclick="openEnvelope()">
-        <center><br><br><br><span id="openText">🎄 Open 🎄</span></center>
-        <div id="paper">
-            <div id="message"></div>
-        </div>
-        <div id="infoMessage">Double click to open the gift!</div>
+<div id="envelope" onmouseover="showInfoMessage()" onmouseout="hideInfoMessage()" onclick="openEnvelope()">
+    <center><br><br><br><span id="openText">🎄 Open 🎄</span></center>
+    <div id="paper">
+        <div id="message"></div>
     </div>
+    <div id="infoMessage">Double click to open the gift!</div>
+</div>
 
-    <!-- Message for mobile users -->
-    <div id="mobileMessage">
-        View on Desktop Only
-    </div>
+<script>
+    function openEnvelope() {
+        var paper = document.getElementById("paper");
+        paper.style.display = "block";
 
-    <script>
-        function openEnvelope() {
-            var paper = document.getElementById("paper");
-            paper.style.display = "block";
-
-            if (paper.style.transform === 'translateY(-100%)') {
-                paper.style.transform = 'translateX(0%)';
-                message.style.display = 'block';
-                envelope.style.pointerEvents = "none"; // Disable clicking during the transition
-            } else {
-                paper.style.transform = 'translateY(-100%)';
-                message.style.display = 'none';
-            }
+        if (paper.style.transform === 'translateY(-100%)') {
+            paper.style.transform = 'translateX(0%)';
+            message.style.display = 'block'; 
+            envelope.style.pointerEvents = "none"; // Disable clicking during the transition
+        } else {
+            paper.style.transform = 'translateY(-100%)';
+            message.style.display = 'none';         
         }
+    }
 
-        function showInfoMessage() {
-            var infoMessage = document.getElementById("infoMessage");
-            infoMessage.style.display = "block";
-        }
+    function showInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "block";
+    }
 
-        function hideInfoMessage() {
-            var infoMessage = document.getElementById("infoMessage");
-            infoMessage.style.display = "none";
-        }
-    </script>
+    function hideInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "none";
+    }
+
+</script>
 
 </body>
-
 </html>
