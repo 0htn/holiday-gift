@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Envelope</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url('././hg/bg.gif');
+            background-size: 100%;
+        }
+
+        #envelope {
+            position: relative;
+            width: 450px;
+            height: 350px;
+            background-color: #ffffff;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.5s;
+            text-align: center;
+            background-image: url('././hg/hg.png');
+            background-size: 100%;
+        }
+
+        #envelope:hover {
+            transform: scale(1.05);
+        }
+
+        #paper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            height: 100%;
+            background-image: url('././hg/sg.png');
+            background-color: #ffffff;
+            background-size: 100%;
+            border-radius: 8px;
+            display: none;
+            transition: transform 0.5s; 
+        }
+
+        #message {
+            padding: 20px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #333333;
+        }
+
+        #infoMessage {
+            display: none;
+            position: absolute;
+            width: 190px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        #openText {
+            font-size: 18px;
+            background-color: #c14250;
+            color: #d9d9d9;
+        }
+    </style>
+</head>
+<body>
+
+<div id="envelope" onmouseover="showInfoMessage()" onmouseout="hideInfoMessage()" onclick="openEnvelope()">
+    <center><br><br><br><span id="openText">🎄 Open 🎄</span></center>
+    <div id="paper">
+        <div id="message"></div>
+    </div>
+    <div id="infoMessage">Double click to open the gift!</div>
+</div>
+
+<script>
+    function openEnvelope() {
+        var paper = document.getElementById("paper");
+        paper.style.display = "block";
+
+        if (paper.style.transform === 'translateY(-100%)') {
+            paper.style.transform = 'translateX(0%)';
+            message.style.display = 'block'; 
+            envelope.style.pointerEvents = "none"; // Disable clicking during the transition
+        } else {
+            paper.style.transform = 'translateY(-100%)';
+            message.style.display = 'none';         
+        }
+    }
+
+    function showInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "block";
+    }
+
+    function hideInfoMessage() {
+        var infoMessage = document.getElementById("infoMessage");
+        infoMessage.style.display = "none";
+    }
+
+</script>
+
+</body>
+</html>
