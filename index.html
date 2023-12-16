@@ -18,6 +18,7 @@
         }
 
         #envelope {
+            display: block;
             position: relative;
             width: 450px;
             height: 350px;
@@ -36,6 +37,7 @@
         }
 
         #paper {
+            display: block;
             position: absolute;
             top: 10px;
             left: 10px;
@@ -70,33 +72,25 @@
             border-radius: 4px;
             font-size: 14px;
         }
-        
+
         #openText {
             font-size: 18px;
             background-color: #c14250;
             color: #d9d9d9;
         }
 
-        /* Media query for hiding content on mobile */
-        @media (max-width: 768px) {
-            #envelope,
-            #paper,
-            #message,
-            #infoMessage,
-            #openText {
+        /* Hide everything on mobile */
+        @media (max-width: 767px) {
+            body, #envelope, #paper, #message, #infoMessage, #openText {
                 display: none;
             }
 
-            body {
-                background: none;
-            }
-
-            #desktopMessage {
+            #mobileMessage {
                 display: block;
                 text-align: center;
                 font-family: 'Arial', sans-serif;
                 color: #333333;
-                font-size: 20px;
+                font-size: 16px;
             }
         }
     </style>
@@ -111,9 +105,7 @@
     <div id="infoMessage">Double click to open the gift!</div>
 </div>
 
-<div id="desktopMessage">
-    View on Desktop only
-</div>
+<div id="mobileMessage">View on desktop only</div>
 
 <script>
     function openEnvelope() {
@@ -139,7 +131,6 @@
         var infoMessage = document.getElementById("infoMessage");
         infoMessage.style.display = "none";
     }
-
 </script>
 
 </body>
